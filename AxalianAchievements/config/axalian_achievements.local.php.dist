@@ -1,0 +1,45 @@
+<?php
+/**
+ * AxalianAchievements Configuration
+ *
+ * @category AxalianAchievements
+ * @package  AxalianAchievements
+ * @author   Michel Maas <michel@michelmaas.com>
+ */
+return array(
+    'axalian_achievements' => array(
+        'achievement_config' => 'config',
+        'categories' => array(
+            'general' => array(
+                'title' => 'General',
+                'description' => 'General site achievements',
+                'image' => 'general.png',
+            ),
+            'social' => array(
+                'title' => 'Social',
+                'description' => 'Social achievements',
+                'image' => 'social.png',
+            )
+        ),
+        'achievements' => array(
+            'visited_site' => array(
+                'category' => 'General',
+                'title' => 'Visited site!',
+                'description' => 'You visited the site!',
+                'event' => 'site_visit',
+                'points' => 10,
+                'multiple' => true,
+                'image' => 'visit.png',
+            ),
+            'comment_10_upvotes' => array(
+                'category' => 'Social',
+                'title' => 'Popular comment!',
+                'description' => 'Your comment is super popular!',
+                'event' => 'comment_10_upvotes',
+                'points' => 10,
+                'multiple' => true,
+                'image' => 'visit.png',
+            ),
+        )
+    )
+);
