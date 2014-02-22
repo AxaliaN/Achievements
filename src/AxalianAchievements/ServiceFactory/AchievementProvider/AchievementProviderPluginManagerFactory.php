@@ -22,7 +22,7 @@ class AchievementProviderPluginManagerFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
+     * @return AchievementProviderPluginManager
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

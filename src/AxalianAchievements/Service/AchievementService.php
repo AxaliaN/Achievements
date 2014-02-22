@@ -68,9 +68,9 @@ class AchievementService
         foreach ($this->getProviders() as $provider) {
             $categories = $provider->getCategories();
 
-            /* @var Category $categories */
+            /* @var Category $category */
             foreach ($categories as $category) {
-                $result[$category->getId()] = $category;
+                $result[$category->getID()] = $category;
             }
         }
 

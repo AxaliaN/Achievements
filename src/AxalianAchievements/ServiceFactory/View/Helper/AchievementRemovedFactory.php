@@ -20,7 +20,7 @@ class AchievementRemovedFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
+     * @return AchievementRemoved
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

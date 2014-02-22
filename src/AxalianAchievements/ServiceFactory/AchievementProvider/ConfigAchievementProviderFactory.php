@@ -21,7 +21,8 @@ class ConfigAchievementProviderFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
+     * @throws \AxalianAchievements\Exception\RuntimeException
+     * @return ConfigAchievementProvider
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {

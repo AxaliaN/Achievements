@@ -20,7 +20,7 @@ class AchievementAwardedFactory implements FactoryInterface
      * Create service
      *
      * @param ServiceLocatorInterface $serviceLocator
-     * @return mixed
+     * @return AchievementAwarded
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
