@@ -12,8 +12,9 @@ namespace AxalianAchievementsTest\ServiceFactory\Options;
 
 
 use AxalianAchievements\ServiceFactory\Options\ModuleOptionsFactory;
+use PHPUnit_Framework_TestCase;
 
-class ModuleOptionsFactoryTest extends \PHPUnit_Framework_TestCase
+class ModuleOptionsFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @expectedException \AxalianAchievements\Exception\RuntimeException

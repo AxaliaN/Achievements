@@ -10,14 +10,13 @@
 
 namespace AxalianAchievementsTest\View\Helper;
 
-use AxalianAchievements\View\Helper\AchievementAwarded;
 use AxalianAchievements\View\Helper\AchievementRemoved;
 use PHPUnit_Framework_TestCase;
 
 class AchievementRemovedTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * @var AchievementAwarded
+     * @var AchievementRemoved
      */
     protected $helper;
 

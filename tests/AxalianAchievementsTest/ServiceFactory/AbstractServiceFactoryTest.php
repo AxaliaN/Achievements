@@ -13,8 +13,9 @@ namespace AxalianAchievementsTest\ServiceFactory;
 
 use Mockery\Mock;
 use Zend\Config\Config;
+use PHPUnit_Framework_TestCase;
 
-class AbstractServiceFactoryTest extends \PHPUnit_Framework_TestCase
+class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var Mock

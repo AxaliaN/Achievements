@@ -2,13 +2,13 @@
 /**
  * CategoryTest
  *
- * @category  AxalianAchievementsTest\AxalianAchievementsTest\Entity
- * @package   AxalianAchievementsTest\AxalianAchievementsTest\Entity
+ * @category  AxalianAchievementsTest\Entity
+ * @package   AxalianAchievementsTest\Entity
  * @author    Michel Maas <michel@michelmaas.com>
  */
  
 
-namespace AxalianAchievementsTest\AxalianAchievementsTest\Entity;
+namespace AxalianAchievementsTest\Entity;
 
 use AxalianAchievements\Entity\Category;
 
