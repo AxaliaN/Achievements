@@ -29,7 +29,7 @@ class AbstractAchievementEntity
             unset($config['id']);
         }
 
-        $this->setId($id);
+        $this->setID($id);
 
         foreach($config as $key => $value)
         {
@@ -42,7 +42,7 @@ class AbstractAchievementEntity
     /**
      * @return int
      */
-    public function getId()
+    public function getID()
     {
         return $this->id;
     }
@@ -51,7 +51,7 @@ class AbstractAchievementEntity
      * @param int $id
      * @return AbstractAchievementEntity
      */
-    public function setId($id)
+    public function setID($id)
     {
         $this->id = $id;
 

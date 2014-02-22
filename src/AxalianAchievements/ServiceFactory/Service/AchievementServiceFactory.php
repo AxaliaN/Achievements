@@ -11,7 +11,7 @@
 namespace AxalianAchievements\ServiceFactory\Service;
 
 
-use AxalianAchievements\Options\ModuleOptions;
+use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
 use AxalianAchievements\Service\AchievementService;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
@@ -27,10 +27,10 @@ class AchievementServiceFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        /** @var ModuleOptions $moduleOptions */
-        $moduleOptions = $serviceLocator->get('AxalianAchievements\Options\ModuleOptions');
+        /** @var AchievementProviderPluginManager $pluginManager */
+        $pluginManager = $serviceLocator->get('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager');
 
-        return new AchievementService($moduleOptions);
+        return new AchievementService($pluginManager);
     }
 }
  

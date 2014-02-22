@@ -11,7 +11,10 @@
 namespace AxalianAchievements\Service;
 
 
+use AxalianAchievements\AchievementProvider\AchievementProviderInterface;
+use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
 use AxalianAchievements\Entity\Achievement;
+use AxalianAchievements\Entity\Category;
 use AxalianAchievements\Options\ModuleOptions;
 
 class AchievementService
@@ -27,22 +30,54 @@ class AchievementService
     protected $removedAchievements = array();
 
     /**
-     * @var array
+     * @var AchievementProviderPluginManager
      */
-    protected $achievements;
+    protected $pluginManager;
 
     /**
-     * @var array
+     * @param AchievementProviderPluginManager $pluginManager
      */
-    protected $categories;
-
-    /**
-     * @param ModuleOptions $moduleOptions
-     */
-    public function __construct(ModuleOptions $moduleOptions)
+    public function __construct(AchievementProviderPluginManager $pluginManager)
     {
-        $this->setAchievements($moduleOptions->getAchievements())
-             ->setCategories($moduleOptions->getCategories());
+        $this->setPluginManager($pluginManager);
+    }
+
+    /**
+     * @return array
+     */
+    public function getAchievements()
+    {
+        $result = array();
+
+        foreach ($this->getProviders() as $provider) {
+            $achievements = $provider->getAchievements();
+
+            /* @var Achievement $achievement */
+            foreach ($achievements as $achievement) {
+                $result[$achievement->getID()] = $achievement;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCategories()
+    {
+        $result = array();
+
+        foreach ($this->getProviders() as $provider) {
+            $categories = $provider->getCategories();
+
+            /* @var Category $categories */
+            foreach ($categories as $category) {
+                $result[$category->getId()] = $category;
+            }
+        }
+
+        return $result;
     }
 
     /**
@@ -95,47 +130,37 @@ class AchievementService
         return $this->removedAchievements;
     }
 
-
     /**
-     * @return array
+     * Get all possible achievement providers
+     *
+     * @return AchievementProviderInterface[]
      */
-    public function getCategories()
+    public function getProviders()
     {
-        return $this->categories;
-    }
+        $providers = array();
 
-    /**
-     * @param array $categories
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAchievements()
-    {
-        return $this->achievements;
-    }
-
-    /**
-     * @param array $achievements
-     * @return self
-     */
-    public function setAchievements($achievements)
-    {
-        foreach($achievements as $id => $achievementConfig) {
-            $achievement = new Achievement($id, $achievementConfig);
-
-            if ($achievement) {
-                $this->achievements[] = $achievement;
-            }
+        foreach ($this->getPluginManager()->getCanonicalNames() as $providerAlias) {
+            $providers[] = $this->getPluginManager()->get($providerAlias);
         }
+
+        return $providers;
+    }
+
+    /**
+     * @return \AxalianAchievements\AchievementProvider\AchievementProviderPluginManager
+     */
+    public function getPluginManager()
+    {
+        return $this->pluginManager;
+    }
+
+    /**
+     * @param \AxalianAchievements\AchievementProvider\AchievementProviderPluginManager $pluginManager
+     * @return AchievementService
+     */
+    public function setPluginManager($pluginManager)
+    {
+        $this->pluginManager = $pluginManager;
 
         return $this;
     }

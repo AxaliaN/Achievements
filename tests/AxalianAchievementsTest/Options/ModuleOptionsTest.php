@@ -28,25 +28,18 @@ class ModuleOptionsTest extends PHPUnit_Framework_TestCase
 
     public function testIfOptionsCanBeSetAndGet()
     {
-        $categories = array(
-            \Mockery::mock('AxalianAchievements\Entity\Category'),
-            \Mockery::mock('AxalianAchievements\Entity\Category'),
-            \Mockery::mock('AxalianAchievements\Entity\Category'),
+        $providers = array(
+            'factories' => array(
+                'FooFactory'
+            ),
+            'invokables' => array(
+                'BarInvokable'
+            )
         );
 
-        $achievements = array(
-            \Mockery::mock('AxalianAchievements\Entity\Achievement'),
-            \Mockery::mock('AxalianAchievements\Entity\Achievement'),
-            \Mockery::mock('AxalianAchievements\Entity\Achievement'),
-        );
+        $this->moduleOptions->setAchievementProviders($providers);
 
-        $this->moduleOptions->setCategories($categories);
-        $this->moduleOptions->setAchievements($achievements);
-        $this->moduleOptions->setAchievementConfig('config');
-
-        $this->assertEquals('config', $this->moduleOptions->getAchievementConfig());
-        $this->assertEquals($achievements, $this->moduleOptions->getAchievements());
-        $this->assertEquals($categories, $this->moduleOptions->getCategories());
+        $this->assertEquals($providers, $this->moduleOptions->getAchievementProviders());
     }
 }
  

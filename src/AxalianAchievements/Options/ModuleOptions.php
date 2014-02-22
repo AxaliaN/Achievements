@@ -16,71 +16,23 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var array
      */
-    protected $achievements;
-
-    /**
-     * @var array
-     */
-    protected $categories;
-
-    /**
-     * @var string
-     */
-    protected $achievement_config;
+    protected $achievement_providers;
 
     /**
      * @return array
      */
-    public function getAchievements()
+    public function getAchievementProviders()
     {
-        return $this->achievements;
+        return $this->achievement_providers;
     }
 
     /**
-     * @param array $achievements
-     * @return self
-     */
-    public function setAchievements($achievements)
-    {
-        $this->achievements = $achievements;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    /**
-     * @param array $categories
+     * @param array $achievement_providers
      * @return ModuleOptions
      */
-    public function setCategories($categories)
+    public function setAchievementProviders($achievement_providers)
     {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAchievementConfig()
-    {
-        return $this->achievement_config;
-    }
-
-    /**
-     * @param string $achievement_config
-     * @return ModuleOptions
-     */
-    public function setAchievementConfig($achievement_config)
-    {
-        $this->achievement_config = $achievement_config;
+        $this->achievement_providers = $achievement_providers;
 
         return $this;
     }

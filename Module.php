@@ -68,6 +68,7 @@ class Module implements ServiceProviderInterface, ViewHelperProviderInterface
                 'AxalianAchievements\Options\ModuleOptions' => 'AxalianAchievements\ServiceFactory\Options\ModuleOptionsFactory',
                 'AxalianAchievements\EventManager\AchievementListenerAggregate' => 'AxalianAchievements\ServiceFactory\EventManager\AchievementListenerAggregateFactory',
                 'AxalianAchievements\Service\AchievementService' => 'AxalianAchievements\ServiceFactory\Service\AchievementServiceFactory',
+                'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager' => 'AxalianAchievements\ServiceFactory\AchievementProvider\AchievementProviderPluginManagerFactory',
             )
         );
     }

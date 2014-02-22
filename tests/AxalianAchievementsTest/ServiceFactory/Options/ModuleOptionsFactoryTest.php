@@ -27,7 +27,7 @@ class ModuleOptionsFactoryTest extends PHPUnit_Framework_TestCase
         $serviceLocatorMock = \Mockery::mock('Zend\ServiceManager\ServiceLocatorInterface');
         $serviceLocatorMock->shouldReceive('get')->andReturn(array());
 
-        $moduleOptions = $factory->createService($serviceLocatorMock);
+        $factory->createService($serviceLocatorMock);
     }
 }
  
