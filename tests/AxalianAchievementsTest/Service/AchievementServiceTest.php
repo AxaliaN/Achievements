@@ -9,6 +9,7 @@
 
 namespace AxalianAchievementsTest\Service;
 
+use AxalianAchievements\Entity\Category;
 use AxalianAchievements\Service\AchievementService;
 use Mockery\Mock;
 use PHPUnit_Framework_TestCase;
@@ -99,6 +100,37 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $achievement = $this->service->getAchievementByEvent('foobax');
 
         $this->assertNull($achievement);
+    }
+
+    public function testIfAchievementsCanBeFetchedByCategory()
+    {
+        $providerMock = \Mockery::mock('AxalianAchievement\AchievementProvider\AchievementProviderInterface');
+        $providerMock->shouldReceive('getAchievements')->andReturn(array($this->achievements[1]));
+
+        $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
+        $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
+
+        $this->achievements[1]->shouldReceive('getCategory')->andReturn($this->categories[1]);
+
+        $achievements = $this->service->getAchievementsByCategory($this->categories[1]);
+
+        $this->assertEquals(array($this->achievements[1]), $achievements);
+    }
+
+
+    public function testIfNoAchievementsReturnedOnInvalidCategory()
+    {
+        $providerMock = \Mockery::mock('AxalianAchievement\AchievementProvider\AchievementProviderInterface');
+        $providerMock->shouldReceive('getAchievements')->andReturn(array($this->achievements[1]));
+
+        $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
+        $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
+
+        $this->achievements[1]->shouldReceive('getCategory')->andReturn(new Category(1,array()));
+
+        $achievements = $this->service->getAchievementsByCategory($this->categories[1]);
+
+        $this->assertEquals(array(), $achievements);
     }
 
     public function testIfCategoriesCanBeRetrieved()

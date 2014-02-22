@@ -96,6 +96,26 @@ class AchievementService
     }
 
     /**
+     * Gets all achievements for a category
+     *
+     * @param Category $category
+     * @return array
+     */
+    public function getAchievementsByCategory(Category $category)
+    {
+        $achievements = array();
+
+        /** @var Achievement $achievement */
+        foreach($this->getAchievements() as $achievement) {
+            if($achievement->getCategory() == $category) {
+                $achievements[] = $achievement;
+            }
+        }
+
+        return $achievements;
+    }
+
+    /**
      * @param Achievement $achievement
      */
     public function addAwardedAchievement(Achievement $achievement)
