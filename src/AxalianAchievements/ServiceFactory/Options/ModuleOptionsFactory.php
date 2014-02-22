@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\ServiceFactory\Options
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\ServiceFactory\Options;
-
 
 use AxalianAchievements\Exception\RuntimeException;
 use AxalianAchievements\Options\ModuleOptions;

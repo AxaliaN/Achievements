@@ -1,15 +1,13 @@
 <?php
 /**
- * AcheivementAwardedFactory
+ * AchievementAwardedFactory
  *
  * @category  AxalianAchievements\View\Helper
  * @package   AxalianAchievements\View\Helper
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\ServiceFactory\View\Helper;
-
 
 use AxalianAchievements\View\Helper\AchievementAwarded;
 use Zend\ServiceManager\FactoryInterface;

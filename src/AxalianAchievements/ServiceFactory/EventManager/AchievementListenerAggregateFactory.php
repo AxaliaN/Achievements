@@ -6,10 +6,9 @@
  * @package   AxalianAchievements\EventManager\ServiceFactory
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
+
 namespace AxalianAchievements\ServiceFactory\EventManager;
 
-use AxalianAchievements\Options\ModuleOptions;
 use AxalianAchievements\EventManager\AchievementListenerAggregate;
 use AxalianAchievements\Service\AchievementService;
 use Zend\ServiceManager\FactoryInterface;

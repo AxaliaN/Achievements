@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\Service
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\ServiceFactory\Service;
-
 
 use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
 use AxalianAchievements\Service\AchievementService;

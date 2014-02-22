@@ -6,7 +6,6 @@
  * @package   AxalianAchievements\AchievementProvider
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\AchievementProvider;
 

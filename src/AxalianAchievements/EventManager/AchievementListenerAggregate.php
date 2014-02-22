@@ -6,18 +6,14 @@
  * @package   AxalianAchievements\src\AxalianAchievements\EventManager
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\EventManager;
 
-
 use AxalianAchievements\Entity\Achievement;
-use AxalianAchievements\Options\ModuleOptions;
 use AxalianAchievements\Service\AchievementService;
 use Zend\EventManager\EventInterface;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\ListenerAggregateInterface;
-use Zend\Mvc\Controller\Plugin\FlashMessenger;
 
 class AchievementListenerAggregate implements ListenerAggregateInterface
 {

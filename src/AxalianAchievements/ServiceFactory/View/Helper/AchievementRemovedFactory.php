@@ -1,12 +1,11 @@
 <?php
 /**
- * AcheivementAwardedFactory
+ * AchievementRemovedFactory
  *
  * @category  AxalianAchievements\View\Helper
  * @package   AxalianAchievements\View\Helper
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\ServiceFactory\View\Helper;
 

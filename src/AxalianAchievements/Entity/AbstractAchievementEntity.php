@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\Entity
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\Entity;
-
 
 class AbstractAchievementEntity
 {

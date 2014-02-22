@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\View\Helper
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\View\Helper;
-
 
 use AxalianAchievements\Service\AchievementService;
 use Zend\View\Helper\AbstractHelper;

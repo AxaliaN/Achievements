@@ -6,16 +6,13 @@
  * @package   AxalianAchievements\Service
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\Service;
-
 
 use AxalianAchievements\AchievementProvider\AchievementProviderInterface;
 use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
 use AxalianAchievements\Entity\Achievement;
 use AxalianAchievements\Entity\Category;
-use AxalianAchievements\Options\ModuleOptions;
 
 class AchievementService
 {
