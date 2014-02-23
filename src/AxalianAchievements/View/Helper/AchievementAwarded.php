@@ -9,7 +9,6 @@
 
 namespace AxalianAchievements\View\Helper;
 
-use Zend\View\Model\ViewModel;
 use Zend\View\Renderer\PhpRenderer;
 
 class AchievementAwarded extends AbstractAchievementViewHelper

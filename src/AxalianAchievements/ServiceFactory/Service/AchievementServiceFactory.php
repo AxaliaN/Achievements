@@ -10,7 +10,9 @@
 namespace AxalianAchievements\ServiceFactory\Service;
 
 use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
+use AxalianAchievements\Options\ModuleOptions;
 use AxalianAchievements\Service\AchievementService;
+use AxalianAchievements\StorageAdapter\StorageAdapterInterface;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -28,7 +30,13 @@ class AchievementServiceFactory implements FactoryInterface
         /** @var AchievementProviderPluginManager $pluginManager */
         $pluginManager = $serviceLocator->get('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager');
 
-        return new AchievementService($pluginManager);
+        /** @var ModuleOptions $moduleOptions */
+        $moduleOptions = $serviceLocator->get('AxalianAchievements\Options\ModuleOptions');
+
+        /** @var StorageAdapterInterface $storageAdapter */
+        $storageAdapter = $serviceLocator->get($moduleOptions->getStorageAdapter());
+
+        return new AchievementService($pluginManager, $storageAdapter);
     }
 }
  

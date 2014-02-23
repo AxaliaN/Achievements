@@ -13,6 +13,8 @@ use AxalianAchievements\AchievementProvider\AchievementProviderInterface;
 use AxalianAchievements\AchievementProvider\AchievementProviderPluginManager;
 use AxalianAchievements\Entity\Achievement;
 use AxalianAchievements\Entity\Category;
+use AxalianAchievements\StorageAdapter\StorageAdapterInterface;
+use AxalianAchievements\User\UserInterface;
 
 class AchievementService
 {
@@ -32,11 +34,18 @@ class AchievementService
     protected $pluginManager;
 
     /**
-     * @param AchievementProviderPluginManager $pluginManager
+     * @var StorageAdapterInterface
      */
-    public function __construct(AchievementProviderPluginManager $pluginManager)
+    protected $storage;
+
+    /**
+     * @param AchievementProviderPluginManager $pluginManager
+     * @param StorageAdapterInterface $storage
+     */
+    public function __construct(AchievementProviderPluginManager $pluginManager, StorageAdapterInterface $storage)
     {
         $this->setPluginManager($pluginManager);
+        $this->setStorage($storage);
     }
 
     /**
@@ -117,18 +126,28 @@ class AchievementService
 
     /**
      * @param Achievement $achievement
+     * @param UserInterface $user
      */
-    public function addAwardedAchievement(Achievement $achievement)
+    public function addAwardedAchievement(Achievement $achievement, UserInterface $user = null)
     {
         $this->awardedAchievements[] = $achievement;
+
+        if ($user !== null) {
+            $this->getStorage()->awardAchievementToUser($achievement, $user);
+        }
     }
 
     /**
      * @param Achievement $achievement
+     * @param UserInterface $user
      */
-    public function addRemovedAchievement(Achievement $achievement)
+    public function addRemovedAchievement(Achievement $achievement, UserInterface $user = null)
     {
         $this->removedAchievements[] = $achievement;
+
+        if ($user !== null) {
+            $this->getStorage()->removeAchievementFromUser($achievement, $user);
+        }
     }
 
     /**
@@ -178,6 +197,25 @@ class AchievementService
     public function setPluginManager($pluginManager)
     {
         $this->pluginManager = $pluginManager;
+
+        return $this;
+    }
+
+    /**
+     * @return \AxalianAchievements\StorageAdapter\StorageAdapterInterface
+     */
+    public function getStorage()
+    {
+        return $this->storage;
+    }
+
+    /**
+     * @param \AxalianAchievements\StorageAdapter\StorageAdapterInterface $storage
+     * @return AchievementService
+     */
+    public function setStorage($storage)
+    {
+        $this->storage = $storage;
 
         return $this;
     }

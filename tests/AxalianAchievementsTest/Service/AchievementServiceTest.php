@@ -39,7 +39,11 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
     {
         $this->pluginProvider = \Mockery::mock('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager');
 
-        $this->service = new AchievementService($this->pluginProvider);
+        $storageAdapter = \Mockery::mock('AxalianAchievements\StorageAdapter\StorageAdapterInterface');
+        $storageAdapter->shouldReceive('awardAchievementToUser');
+        $storageAdapter->shouldReceive('removeAchievementFromUser');
+
+        $this->service = new AchievementService($this->pluginProvider, $storageAdapter);
 
         $this->achievements = array(
             1 => \Mockery::mock('AxalianAchievements\Entity\Achievement')->shouldReceive('getID')->andReturn(1)->getMock(),
@@ -148,16 +152,20 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
 
     public function testIfAwardedAchievementsAreCollected()
     {
+        $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
+
         $this->service->addAwardedAchievement($this->achievements[1]);
-        $this->service->addAwardedAchievement($this->achievements[2]);
+        $this->service->addAwardedAchievement($this->achievements[2], $userMock);
 
         $this->assertEquals(array($this->achievements[1], $this->achievements[2]), $this->service->getAwardedAchievements());
     }
 
     public function testIfRemovedAchievementsAreCollected()
     {
+        $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
+
         $this->service->addRemovedAchievement($this->achievements[1]);
-        $this->service->addRemovedAchievement($this->achievements[2]);
+        $this->service->addRemovedAchievement($this->achievements[2], $userMock);
 
         $this->assertEquals(array($this->achievements[1], $this->achievements[2]), $this->service->getRemovedAchievements());
     }

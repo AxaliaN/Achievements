@@ -37,9 +37,13 @@ class ModuleOptionsTest extends PHPUnit_Framework_TestCase
             )
         );
 
+        $storageAdapter = 'FooBarAdapter';
+
         $this->moduleOptions->setAchievementProviders($providers);
+        $this->moduleOptions->setStorageAdapter($storageAdapter);
 
         $this->assertEquals($providers, $this->moduleOptions->getAchievementProviders());
+        $this->assertEquals($storageAdapter, $this->moduleOptions->getStorageAdapter());
     }
 }
  

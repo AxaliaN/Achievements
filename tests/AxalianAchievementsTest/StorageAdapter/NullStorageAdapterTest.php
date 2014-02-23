@@ -36,7 +36,7 @@ class NullStorageAdapterTest extends PHPUnit_Framework_TestCase
         $user = \Mockery::mock('AxalianAchievements\User\UserInterface');
         $achievement = \Mockery::mock('AxalianAchievements\Entity\Achievement');
 
-        $this->assertTrue($this->adapter->awardAchievementToUser($user, $achievement));
+        $this->assertTrue($this->adapter->awardAchievementToUser($achievement, $user));
     }
 
     public function testIfTrueReturnedOnRemove()
@@ -44,7 +44,7 @@ class NullStorageAdapterTest extends PHPUnit_Framework_TestCase
         $user = \Mockery::mock('AxalianAchievements\User\UserInterface');
         $achievement = \Mockery::mock('AxalianAchievements\Entity\Achievement');
 
-        $this->assertTrue($this->adapter->removeAchievementFromUser($user, $achievement));
+        $this->assertTrue($this->adapter->removeAchievementFromUser($achievement, $user));
     }
 }
  

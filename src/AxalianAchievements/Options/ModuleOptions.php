@@ -19,6 +19,11 @@ class ModuleOptions extends AbstractOptions
     protected $achievement_providers;
 
     /**
+     * @var string
+     */
+    protected $storage_adapter;
+
+    /**
      * @return array
      */
     public function getAchievementProviders()
@@ -33,6 +38,25 @@ class ModuleOptions extends AbstractOptions
     public function setAchievementProviders($achievement_providers)
     {
         $this->achievement_providers = $achievement_providers;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStorageAdapter()
+    {
+        return $this->storage_adapter;
+    }
+
+    /**
+     * @param string $storage_adapter
+     * @return ModuleOptions
+     */
+    public function setStorageAdapter($storage_adapter)
+    {
+        $this->storage_adapter = $storage_adapter;
 
         return $this;
     }

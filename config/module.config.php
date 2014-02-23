@@ -17,7 +17,8 @@ return array(
             'factories' => array(
                 'AxalianAchievements\AchievementProvider\ConfigAchievementProvider' => 'AxalianAchievements\ServiceFactory\AchievementProvider\ConfigAchievementProviderFactory'
             )
-        )
+        ),
+        'storage_adapter' => 'AxalianAchievements\StorageAdapter\NullStorageAdapter'
     ),
     'axalian_achievements_config_provider' => array(
         'categories' => array(

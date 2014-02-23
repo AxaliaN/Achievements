@@ -59,9 +59,10 @@ class AchievementListenerAggregate implements ListenerAggregateInterface
     public function awardAchievement(EventInterface $e)
     {
         $achievement = $this->getService()->getAchievementByEvent($e->getName());
+        $user = $e->getParam('user', null);
 
         if ($achievement) {
-            $this->getService()->addAwardedAchievement($achievement);
+            $this->getService()->addAwardedAchievement($achievement, $user);
         }
     }
 

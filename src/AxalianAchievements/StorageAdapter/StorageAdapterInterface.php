@@ -25,13 +25,13 @@ interface StorageAdapterInterface
      * @param Achievement $achievement
      * @return bool
      */
-    public function awardAchievementToUser(UserInterface $user, Achievement $achievement);
+    public function awardAchievementToUser(Achievement $achievement, UserInterface $user);
 
     /**
      * @param UserInterface $user
      * @param Achievement $achievement
      * @return bool
      */
-    public function removeAchievementFromUser(UserInterface $user, Achievement $achievement);
+    public function removeAchievementFromUser(Achievement $achievement, UserInterface $user);
 }
  

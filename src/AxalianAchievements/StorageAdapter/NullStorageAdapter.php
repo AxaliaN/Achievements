@@ -29,7 +29,7 @@ class NullStorageAdapter implements StorageAdapterInterface
     /**
      * {@inheritDoc}
      */
-    public function awardAchievementToUser(UserInterface $user, Achievement $achievement)
+    public function awardAchievementToUser(Achievement $achievement, UserInterface $user)
     {
         return true;
     }
@@ -37,7 +37,7 @@ class NullStorageAdapter implements StorageAdapterInterface
     /**
      * {@inheritDoc}
      */
-    public function removeAchievementFromUser(UserInterface $user, Achievement $achievement)
+    public function removeAchievementFromUser(Achievement $achievement, UserInterface $user)
     {
         return true;
     }
