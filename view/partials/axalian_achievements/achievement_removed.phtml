@@ -1,10 +1,18 @@
+<div class='achievements-removed'></div>
 <?php
 use AxalianAchievements\Entity\Achievement;
 
-/** @var Achievement $achievement */
+$script = 'var achievementsRemoved = [';
 
-foreach($this->achievements as $achievement): ?><div class="achievement alert alert-danger alert-dismissable">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <span class="title"><?=$achievement->getTitle()?></span>
-    <div class="description"><?=$achievement->getDescription()?></div>
-</div><?php endforeach; ?>
+/** @var Achievement $achievement */
+foreach($this->achievements as $i => $achievement){
+    $script .= '"' . $achievement->getTitle() . '"';
+
+    if($i != count($achievements) - 1){
+        $script .= ',';
+    }
+}
+
+$script .= ']';
+
+$this->inlineScript()->appendScript($script);

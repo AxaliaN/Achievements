@@ -7,6 +7,62 @@
  * @author    Michel Maas <michel@michelmaas.com>
  */
 return array(
+    'assetic_configuration' => array(
+        // Use on production environment
+        // 'debug'              => false,
+        // 'buildOnRequest'     => false,
+
+        'routes' => array(
+            'home' => array(
+                '@achievements_js',
+                '@achievements_css',
+            ),
+        ),
+        // Use on development environment
+        'debug' => true,
+        'buildOnRequest' => true,
+
+        // This is optional flag, by default set to `true`.
+        // In debug mode allow you to combine all assets to one file.
+        // 'combine' => false,
+
+        // this is specific to this project
+        'webPath' => realpath('public/assets'),
+        'basePath' => 'assets',
+
+        'modules' => array(
+            'AxalianAchievements' => array(
+                'root_path' => __DIR__ . '/../assets',
+
+                'collections' => array(
+                    'achievements_css' => array(
+                        'assets' => array(
+                            'css/achievements.css',
+                        ),
+                        'filters' => array(
+                            '?CssRewriteFilter' => array(
+                                'name' => 'Assetic\Filter\CssRewriteFilter'
+                            ),
+                            '?CssMinFilter' => array(
+                                'name' => 'Assetic\Filter\CssMinFilter'
+                            ),
+                        ),
+                    ),
+                    'achievements_js' => array(
+                        'assets' => array(
+                            'js/bootstrap-notify.js',
+                            'js/jquery.axalian-achievements.js',
+                        ),
+                        'filters' => array(
+                            '?JSMinFilter' => array(
+                                'name' => 'Assetic\Filter\JSMinFilter'
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+        ),
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
