@@ -5,6 +5,7 @@
  * @category  AxalianAchievements\View\Helper
  * @package   AxalianAchievements\View\Helper
  * @author    Michel Maas <michel@michelmaas.com>
+ * @method 	  string|\Zend\View\Helper\Partial partial($name = null, $values = null)
  */
 
 namespace AxalianAchievements\View\Helper;
