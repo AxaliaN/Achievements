@@ -10,6 +10,8 @@
 
 namespace AxalianAchievements\View\Helper;
 
+use Zend\View\Renderer\PhpRenderer;
+
 class AchievementRemoved extends AbstractAchievementViewHelper
 {
     /**
@@ -28,7 +30,10 @@ class AchievementRemoved extends AbstractAchievementViewHelper
      */
     public function __toString()
     {
-        return $this->getView()->partial(
+        /** @var PhpRenderer $view */
+        $view = $this->getView();
+
+        return $view->partial(
             $this->partial,
             array(
                 'achievements' => $this->getService()->getRemovedAchievements()

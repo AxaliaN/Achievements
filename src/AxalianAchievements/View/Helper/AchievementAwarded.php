@@ -5,10 +5,12 @@
  * @category  AxalianAchievements\View\Helper
  * @package   AxalianAchievements\View\Helper
  * @author    Michel Maas <michel@michelmaas.com>
- * @method    string|\Zend\View\Helper\Partial partial($name = null, $values = null)
  */
 
 namespace AxalianAchievements\View\Helper;
+
+use Zend\View\Model\ViewModel;
+use Zend\View\Renderer\PhpRenderer;
 
 class AchievementAwarded extends AbstractAchievementViewHelper
 {
@@ -28,7 +30,10 @@ class AchievementAwarded extends AbstractAchievementViewHelper
      */
     public function __toString()
     {
-        return $this->getView()->partial(
+        /** @var PhpRenderer $view */
+        $view = $this->getView();
+
+        return $view->partial(
             $this->partial,
             array(
                 'achievements' => $this->getService()->getAwardedAchievements()
