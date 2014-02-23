@@ -8,38 +8,34 @@
  */
 return array(
     'axalian_achievements' => array(
-        'achievement_config' => 'config',
-        'categories' => array(
-            'general' => array(
-                'title' => 'General',
-                'description' => 'General site achievements',
-                'image' => 'general.png',
-            ),
-            'social' => array(
-                'title' => 'Social',
-                'description' => 'Social achievements',
-                'image' => 'social.png',
+        'achievement_providers' => array(
+            'factories' => array(
+                'AxalianAchievements\AchievementProvider\ConfigAchievementProvider' => 'AxalianAchievements\ServiceFactory\AchievementProvider\ConfigAchievementProviderFactory'
             )
         ),
-        'achievements' => array(
-            'visited_site' => array(
-                'category' => 'General',
-                'title' => 'Visited site!',
-                'description' => 'You visited the site!',
-                'event' => 'site_visit',
-                'points' => 10,
-                'multiple' => true,
-                'image' => 'visit.png',
+        'storage_adapter' => 'AxalianAchievements\StorageAdapter\NullStorageAdapter'
+    ),
+    'axalian_achievements_config_provider' => array(
+            'categories' => array(
+                'general' => array(
+                    'title' => 'General',
+                    'description' => 'General site achievements',
+                    'image' => 'general.png',
+                ),
+                ...
             ),
-            'comment_10_upvotes' => array(
-                'category' => 'Social',
-                'title' => 'Popular comment!',
-                'description' => 'Your comment is super popular!',
-                'event' => 'comment_10_upvotes',
-                'points' => 10,
-                'multiple' => true,
-                'image' => 'visit.png',
-            ),
+            'achievements' => array(
+                'visited_site' => array(
+                    'category' => 'General',
+                    'title' => 'Visited site!',
+                    'description' => 'You visited the site!',
+                    'event' => 'site_visit',
+                    'points' => 10,
+                    'multiple' => true,
+                    'image' => 'visit.png',
+                ),
+                ...
+            )
         )
     )
 );

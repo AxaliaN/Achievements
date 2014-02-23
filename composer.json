@@ -30,8 +30,5 @@
         "classmap": [
             "./Module.php"
         ]
-    },
-    "suggest": {
-        "widmogrod/zf2-assetic-module": "Provides an easy way of copying and building this modules assets"
     }
 }

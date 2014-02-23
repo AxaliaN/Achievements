@@ -52,11 +52,6 @@ class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
                 array('AxalianAchievements\Service\AchievementService'),
                 array('AxalianAchievements\Service\AchievementService' => \Mockery::mock('AxalianAchievements\Service\AchievementService'))
             ),
-            'ModuleOptionsFactory' => array(
-                'AxalianAchievements\ServiceFactory\Options\ModuleOptionsFactory',
-                array('Config'),
-                array('Config' => new Config(array('axalian_achievements' => array())))
-            ),
             'AchievementProviderPluginManagerFactory' => array(
                 'AxalianAchievements\ServiceFactory\AchievementProvider\AchievementProviderPluginManagerFactory',
                 array('AxalianAchievements\Options\ModuleOptions'),
