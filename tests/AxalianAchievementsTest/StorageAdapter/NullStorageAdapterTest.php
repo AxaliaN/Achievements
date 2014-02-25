@@ -26,25 +26,25 @@ class NullStorageAdapterTest extends PHPUnit_Framework_TestCase
 
     public function testIfEmptyArrayReturnedOnGet()
     {
-        $user = \Mockery::mock('AxalianAchievements\User\UserInterface');
+        $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
 
-        $this->assertEquals(array(), $this->adapter->getAchievementsForUser($user));
+        $this->assertEquals(array(), $this->adapter->getAchievementsForUser($userMock));
     }
 
     public function testIfTrueReturnedOnAward()
     {
-        $user = \Mockery::mock('AxalianAchievements\User\UserInterface');
-        $achievement = \Mockery::mock('AxalianAchievements\Entity\Achievement');
+        $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
+        $achievementMock = \Mockery::mock('AxalianAchievements\Entity\Achievement');
 
-        $this->assertTrue($this->adapter->awardAchievementToUser($achievement, $user));
+        $this->assertTrue($this->adapter->awardAchievementToUser($achievementMock, $userMock));
     }
 
     public function testIfTrueReturnedOnRemove()
     {
-        $user = \Mockery::mock('AxalianAchievements\User\UserInterface');
-        $achievement = \Mockery::mock('AxalianAchievements\Entity\Achievement');
+        $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
+        $achievementMock = \Mockery::mock('AxalianAchievements\Entity\Achievement');
 
-        $this->assertTrue($this->adapter->removeAchievementFromUser($achievement, $user));
+        $this->assertTrue($this->adapter->removeAchievementFromUser($achievementMock, $userMock));
     }
 }
  
