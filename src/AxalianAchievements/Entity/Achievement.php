@@ -39,7 +39,7 @@ class Achievement extends AbstractAchievementEntity
     /**
      * @var string
      */
-    protected $event;
+    protected $name;
 
     /**
      * @var bool
@@ -135,16 +135,16 @@ class Achievement extends AbstractAchievementEntity
      */
     public function getEvent()
     {
-        return $this->event;
+        return $this->name;
     }
 
     /**
-     * @param string $event
+     * @param string $name
      * @return self
      */
-    public function setEvent($event)
+    public function setEvent($name)
     {
-        $this->event = $event;
+        $this->name = $name;
 
         return $this;
     }

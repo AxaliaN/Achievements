@@ -82,10 +82,10 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
         $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
 
-        $this->achievements[1]->shouldReceive('getEvent')->andReturn('foobar');
-        $this->achievements[2]->shouldReceive('getEvent')->andReturn('foobaz');
+        $this->achievements[1]->shouldReceive('getName')->andReturn('foobar');
+        $this->achievements[2]->shouldReceive('getName')->andReturn('foobaz');
 
-        $achievement = $this->service->getAchievementByEvent('foobar');
+        $achievement = $this->service->getAchievementByName('foobar');
 
         $this->assertEquals($this->achievements[1], $achievement);
     }
@@ -98,10 +98,10 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
         $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
 
-        $this->achievements[1]->shouldReceive('getEvent')->andReturn('foobar');
-        $this->achievements[2]->shouldReceive('getEvent')->andReturn('foobaz');
+        $this->achievements[1]->shouldReceive('getName')->andReturn('foobar');
+        $this->achievements[2]->shouldReceive('getName')->andReturn('foobaz');
 
-        $achievement = $this->service->getAchievementByEvent('foobax');
+        $achievement = $this->service->getAchievementByName('foobax');
 
         $this->assertNull($achievement);
     }

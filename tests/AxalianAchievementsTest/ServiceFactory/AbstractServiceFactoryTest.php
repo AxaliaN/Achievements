@@ -47,11 +47,6 @@ class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
         $moduleOptionsMock->shouldReceive('getStorageAdapter')->andReturn(\Mockery::mock('AxalianAchievements\StorageAdapter\StorageAdapterInterface'))->getMock();
 
         return array(
-            'AchievementListenerAggregateFactory' => array(
-                'AxalianAchievements\ServiceFactory\EventManager\AchievementListenerAggregateFactory',
-                array('AxalianAchievements\Service\AchievementService'),
-                array('AxalianAchievements\Service\AchievementService' => \Mockery::mock('AxalianAchievements\Service\AchievementService'))
-            ),
             'AchievementProviderPluginManagerFactory' => array(
                 'AxalianAchievements\ServiceFactory\AchievementProvider\AchievementProviderPluginManagerFactory',
                 array('AxalianAchievements\Options\ModuleOptions'),

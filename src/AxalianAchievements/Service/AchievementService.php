@@ -15,6 +15,9 @@ use AxalianAchievements\Entity\Achievement;
 use AxalianAchievements\Entity\Category;
 use AxalianAchievements\StorageAdapter\StorageAdapterInterface;
 use AxalianAchievements\User\UserInterface;
+use Zend\EventManager\EventManager;
+use Zend\EventManager\EventManagerAwareInterface;
+use Zend\EventManager\EventManagerInterface;
 
 class AchievementService
 {
@@ -37,6 +40,11 @@ class AchievementService
      * @var StorageAdapterInterface
      */
     protected $storage;
+
+    /**
+     * @var EventManager
+     */
+    protected $eventManager;
 
     /**
      * @param AchievementProviderPluginManager $pluginManager
@@ -68,6 +76,7 @@ class AchievementService
     }
 
     /**
+     *
      * @return array
      */
     public function getCategories()
@@ -89,14 +98,14 @@ class AchievementService
     /**
      * Retrieve an achievement by using its event name
      *
-     * @param string $eventName Name of the event to look for
-     * @return \AxalianAchievements\Entity\Achievement|null  The found event, or null of nothing found
+     * @param string $achievementName Name of the achievement to look for
+     * @return \AxalianAchievements\Entity\Achievement|null  The found achievement, or null of nothing found
      */
-    public function getAchievementByEvent($eventName)
+    public function getAchievementByName($achievementName)
     {
         /** @var Achievement $achievement */
         foreach($this->getAchievements() as $achievement) {
-            if($achievement->getEvent() == $eventName || ($achievement->getEvent() . '_remove') == $eventName) {
+            if($achievement->getName() == $achievementName) {
                 return $achievement;
             }
         }
@@ -127,12 +136,13 @@ class AchievementService
     /**
      * @param Achievement $achievement
      * @param UserInterface $user
+     * @param bool $store Whether to store this action using the storage adapter
      */
-    public function addAwardedAchievement(Achievement $achievement, UserInterface $user = null)
+    public function addAwardedAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
     {
         $this->awardedAchievements[] = $achievement;
 
-        if ($user !== null) {
+        if ($user !== null && $store == true) {
             $this->getStorage()->awardAchievementToUser($achievement, $user);
         }
     }
@@ -140,12 +150,13 @@ class AchievementService
     /**
      * @param Achievement $achievement
      * @param UserInterface $user
+     * @param bool $store Whether to store this action using the storage adapter
      */
-    public function addRemovedAchievement(Achievement $achievement, UserInterface $user = null)
+    public function addRemovedAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
     {
         $this->removedAchievements[] = $achievement;
 
-        if ($user !== null) {
+        if ($user !== null && $store == true) {
             $this->getStorage()->removeAchievementFromUser($achievement, $user);
         }
     }
