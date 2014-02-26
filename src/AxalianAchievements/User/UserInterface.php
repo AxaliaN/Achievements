@@ -13,6 +13,9 @@ namespace AxalianAchievements\User;
 
 interface UserInterface
 {
-
+    /**
+     * @return int 
+     */
+    public function getUserID();
 }
  
