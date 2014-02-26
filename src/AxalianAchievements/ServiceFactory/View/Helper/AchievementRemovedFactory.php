@@ -24,7 +24,8 @@ class AchievementRemovedFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new AchievementRemoved($serviceLocator->getServiceLocator()->get('AxalianAchievements\Service\AchievementService'));
+        return new AchievementRemoved(
+            $serviceLocator->getServiceLocator()->get('AxalianAchievements\Service\AchievementService')
+        );
     }
 }
- 

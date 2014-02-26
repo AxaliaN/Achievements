@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\Options
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievementsTest\Options;
-
 
 use AxalianAchievements\Options\ModuleOptions;
 use PHPUnit_Framework_TestCase;
@@ -46,4 +44,3 @@ class ModuleOptionsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($storageAdapter, $this->moduleOptions->getStorageAdapter());
     }
 }
- 

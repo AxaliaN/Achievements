@@ -58,7 +58,7 @@ class ConfigAchievementProvider implements AchievementProviderInterface
      */
     public function setAchievements($achievements)
     {
-        foreach($achievements as $achievementID => $achievementConfig) {
+        foreach ($achievements as $achievementID => $achievementConfig) {
             $this->achievements[] = new Achievement($achievementID, $achievementConfig);
         }
 
@@ -71,11 +71,10 @@ class ConfigAchievementProvider implements AchievementProviderInterface
      */
     public function setCategories($categories)
     {
-        foreach($categories as $categoryID => $categoryConfig) {
+        foreach ($categories as $categoryID => $categoryConfig) {
             $this->categories[] = new Category($categoryID, $categoryConfig);
         }
 
         return $this;
     }
 }
- 

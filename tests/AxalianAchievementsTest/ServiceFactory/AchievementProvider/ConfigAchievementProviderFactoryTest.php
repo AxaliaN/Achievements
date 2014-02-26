@@ -6,10 +6,8 @@
  * @package   AxalianAchievementsTest\ServiceFactory\AchievementProvider
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievementsTest\ServiceFactory\AchievementProvider;
-
 
 use AxalianAchievements\ServiceFactory\AchievementProvider\ConfigAchievementProviderFactory;
 use PHPUnit_Framework_TestCase;
@@ -44,7 +42,9 @@ class ConfigAchievementProviderFactoryTest extends PHPUnit_Framework_TestCase
         $serviceLocatorMock->shouldReceive('get')->andReturn($config);
         $serviceLocatorMock->shouldReceive('getServiceLocator')->andReturn($serviceLocatorMock);
 
-        $factory->createService($serviceLocatorMock);
+        $this->assertInstanceOf(
+            'AxalianAchievements\AchievementProvider\ConfigAchievementProvider',
+            $factory->createService($serviceLocatorMock)
+        );
     }
 }
- 

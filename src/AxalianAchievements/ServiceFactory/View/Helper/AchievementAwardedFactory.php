@@ -24,7 +24,8 @@ class AchievementAwardedFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-        return new AchievementAwarded($serviceLocator->getServiceLocator()->get('AxalianAchievements\Service\AchievementService'));
+        return new AchievementAwarded(
+            $serviceLocator->getServiceLocator()->get('AxalianAchievements\Service\AchievementService')
+        );
     }
 }
- 

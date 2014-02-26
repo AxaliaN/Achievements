@@ -36,11 +36,12 @@ class ModuleOptionsFactory implements FactoryInterface
             throw new RuntimeException('No valid "achievement_providers" config set in "axalian_achievements"');
         }
 
-        if (!isset($config['axalian_achievements']['storage_adapter']) || empty($config['axalian_achievements']['storage_adapter'])) {
+        if (!isset($config['axalian_achievements']['storage_adapter']) ||
+            empty($config['axalian_achievements']['storage_adapter'])
+        ) {
             throw new RuntimeException('No valid "storage_adapter" config set in "axalian_achievements"');
         }
 
         return new ModuleOptions($config['axalian_achievements']);
     }
 }
- 

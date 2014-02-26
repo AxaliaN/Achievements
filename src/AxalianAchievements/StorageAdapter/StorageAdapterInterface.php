@@ -34,4 +34,3 @@ interface StorageAdapterInterface
      */
     public function removeAchievementFromUser(Achievement $achievement, UserInterface $user);
 }
- 

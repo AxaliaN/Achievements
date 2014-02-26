@@ -41,4 +41,3 @@ class AchievementRemoved extends AbstractAchievementViewHelper
         );
     }
 }
- 
