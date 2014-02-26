@@ -6,12 +6,9 @@
  * @package   AxalianAchievements
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements;
 
-
-use AxalianAchievements\EventManager\AchievementListenerAggregate;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 
