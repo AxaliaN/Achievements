@@ -7,6 +7,7 @@
  * @author    Michel Maas <michel@michelmaas.com>
  */
 
+
 namespace AxalianAchievementsTest\View\Helper;
 
 use AxalianAchievements\View\Helper\AchievementAwarded;
@@ -23,19 +24,19 @@ class AchievementAwardedTest extends PHPUnit_Framework_TestCase
     {
         $serviceMock = \Mockery::mock('AxalianAchievements\Service\AchievementService');
 
-        $achievementMock1 = \Mockery::mock('AxalianAchievements\Entity\Achievement')
+        $this->achievementMock1 = \Mockery::mock('AxalianAchievements\Entity\Achievement')
             ->shouldReceive('getEvent')
             ->andReturn('test_event_1')
             ->getMock();
 
-        $achievementMock2 = \Mockery::mock('AxalianAchievements\Entity\Achievement')
+        $this->achievementMock2 = \Mockery::mock('AxalianAchievements\Entity\Achievement')
             ->shouldReceive('getEvent')
             ->andReturn('test_event_2')
             ->getMock();
 
         $achievements = array(
-            $achievementMock1,
-            $achievementMock2,
+            $this->achievementMock1,
+            $this->achievementMock2,
         );
 
         $serviceMock->shouldReceive('getAwardedAchievements')->andReturn($achievements);
@@ -66,3 +67,4 @@ class AchievementAwardedTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('foobar', $this->helper->__toString());
     }
 }
+ 

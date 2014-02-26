@@ -42,6 +42,11 @@ class Achievement extends AbstractAchievementEntity
     protected $name;
 
     /**
+     * @var bool
+     */
+    protected $multiple;
+
+    /**
      * @return \AxalianAchievements\Entity\Category
      */
     public function getCategory()
@@ -128,7 +133,7 @@ class Achievement extends AbstractAchievementEntity
     /**
      * @return string
      */
-    public function getName()
+    public function getEvent()
     {
         return $this->name;
     }
@@ -137,9 +142,28 @@ class Achievement extends AbstractAchievementEntity
      * @param string $name
      * @return self
      */
-    public function setName($name)
+    public function setEvent($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getMultiple()
+    {
+        return $this->multiple;
+    }
+
+    /**
+     * @param boolean $multiple
+     * @return self
+     */
+    public function setMultiple($multiple)
+    {
+        $this->multiple = $multiple;
 
         return $this;
     }
@@ -155,3 +179,4 @@ class Achievement extends AbstractAchievementEntity
         return $this;
     }
 }
+ 

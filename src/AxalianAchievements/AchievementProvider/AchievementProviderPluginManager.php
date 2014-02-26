@@ -32,8 +32,7 @@ class AchievementProviderPluginManager extends AbstractPluginManager
 
         throw new RuntimeException(
             sprintf(
-                'Plugin of type %s is invalid; must implement ' .
-                'AxalianAchievements\AchievementProvider\AchievementProviderInterface',
+                'Plugin of type %s is invalid; must implement AxalianAchievements\AchievementProvider\AchievementProviderInterface',
                 (is_object($plugin) ? get_class($plugin) : gettype($plugin))
             )
         );

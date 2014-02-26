@@ -40,4 +40,6 @@ class AchievementAwarded extends AbstractAchievementViewHelper
             )
         );
     }
+
 }
+ 

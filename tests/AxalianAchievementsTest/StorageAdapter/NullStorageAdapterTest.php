@@ -47,3 +47,4 @@ class NullStorageAdapterTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->adapter->removeAchievementFromUser($achievementMock, $userMock));
     }
 }
+ 

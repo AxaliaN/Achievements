@@ -6,8 +6,10 @@
  * @package   AxalianAchievements\Entity
  * @author    Michel Maas <michel@michelmaas.com>
  */
+ 
 
 namespace AxalianAchievements\Entity;
+
 
 class Category extends AbstractAchievementEntity
 {
@@ -83,3 +85,4 @@ class Category extends AbstractAchievementEntity
         return $this;
     }
 }
+ 

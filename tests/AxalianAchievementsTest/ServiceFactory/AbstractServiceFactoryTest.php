@@ -6,8 +6,10 @@
  * @package   AxalianAchievementsTest\ServiceFactory
  * @author    Michel Maas <michel@michelmaas.com>
  */
+ 
 
 namespace AxalianAchievementsTest\ServiceFactory;
+
 
 use Mockery\Mock;
 use Zend\Config\Config;
@@ -32,10 +34,7 @@ class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
     public function testServiceFactories($class, $dependencies, $returnDependencies)
     {
         foreach ($dependencies as $dependency) {
-            $this->serviceLocator->shouldReceive('get')
-                                 ->with($dependency)
-                                 ->andReturn($returnDependencies[$dependency])
-                                 ->getMock();
+            $this->serviceLocator->shouldReceive('get')->with($dependency)->andReturn($returnDependencies[$dependency])->getMock();
         }
 
         $factory = new $class;
@@ -44,14 +43,8 @@ class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
 
     public function serviceFactories()
     {
-        $moduleOptionsMock = \Mockery::mock('AxalianAchievements\Options\ModuleOptions')
-                             ->shouldReceive('getAchievementProviders')
-                             ->andReturn(array())
-                             ->getMock();
-
-        $moduleOptionsMock->shouldReceive('getStorageAdapter')
-                          ->andReturn(\Mockery::mock('AxalianAchievements\StorageAdapter\StorageAdapterInterface'))
-                          ->getMock();
+        $moduleOptionsMock = \Mockery::mock('AxalianAchievements\Options\ModuleOptions')->shouldReceive('getAchievementProviders')->andReturn(array())->getMock();
+        $moduleOptionsMock->shouldReceive('getStorageAdapter')->andReturn(\Mockery::mock('AxalianAchievements\StorageAdapter\StorageAdapterInterface'))->getMock();
 
         return array(
             'AchievementProviderPluginManagerFactory' => array(
@@ -61,11 +54,7 @@ class AbstractServiceFactoryTest extends PHPUnit_Framework_TestCase
             ),
             'AchievementServiceFactory' => array(
                 'AxalianAchievements\ServiceFactory\Service\AchievementServiceFactory',
-                array(
-                    'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager',
-                    'AxalianAchievements\StorageAdapter\StorageAdapterInterface',
-                    'AxalianAchievements\Options\ModuleOptions'
-                ),
+                array('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager', 'AxalianAchievements\StorageAdapter\StorageAdapterInterface','AxalianAchievements\Options\ModuleOptions'),
                 array(
                     'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager' => \Mockery::mock('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager'),
                     'AxalianAchievements\Options\ModuleOptions' => $moduleOptionsMock,

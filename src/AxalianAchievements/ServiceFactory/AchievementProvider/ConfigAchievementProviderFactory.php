@@ -35,3 +35,4 @@ class ConfigAchievementProviderFactory implements FactoryInterface
         return new ConfigAchievementProvider($config['axalian_achievements_config_provider']);
     }
 }
+ 

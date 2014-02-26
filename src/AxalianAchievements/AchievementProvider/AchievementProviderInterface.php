@@ -21,3 +21,4 @@ interface AchievementProviderInterface
      */
     public function getCategories();
 }
+ 

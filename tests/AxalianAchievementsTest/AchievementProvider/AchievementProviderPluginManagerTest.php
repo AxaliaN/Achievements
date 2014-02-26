@@ -39,3 +39,4 @@ class AchievementProviderPluginManagerTest extends PHPUnit_Framework_TestCase
         $this->pluginManager->validatePlugin($plugin);
     }
 }
+ 

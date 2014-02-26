@@ -29,7 +29,8 @@ class AbstractAchievementEntity
 
         $this->setID($id);
 
-        foreach ($config as $key => $value) {
+        foreach($config as $key => $value)
+        {
             $setter = 'set' . ucfirst($key);
 
             $this->$setter($value);
@@ -55,3 +56,4 @@ class AbstractAchievementEntity
         return $this;
     }
 }
+ 
