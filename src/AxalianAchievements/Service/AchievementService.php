@@ -15,9 +15,6 @@ use AxalianAchievements\Entity\Achievement;
 use AxalianAchievements\Entity\Category;
 use AxalianAchievements\StorageAdapter\StorageAdapterInterface;
 use AxalianAchievements\User\UserInterface;
-use Zend\EventManager\EventManager;
-use Zend\EventManager\EventManagerAwareInterface;
-use Zend\EventManager\EventManagerInterface;
 
 class AchievementService
 {
@@ -40,11 +37,6 @@ class AchievementService
      * @var StorageAdapterInterface
      */
     protected $storage;
-
-    /**
-     * @var EventManager
-     */
-    protected $eventManager;
 
     /**
      * @param AchievementProviderPluginManager $pluginManager
@@ -96,7 +88,7 @@ class AchievementService
     }
 
     /**
-     * Retrieve an achievement by using its event name
+     * Retrieve an achievement by using its name
      *
      * @param string $achievementName Name of the achievement to look for
      * @return \AxalianAchievements\Entity\Achievement|null  The found achievement, or null of nothing found
