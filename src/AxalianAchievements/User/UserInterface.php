@@ -6,10 +6,8 @@
  * @package   AxalianAchievements\User
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\User;
-
 
 interface UserInterface
 {
@@ -18,4 +16,3 @@ interface UserInterface
      */
     public function getUserID();
 }
- 

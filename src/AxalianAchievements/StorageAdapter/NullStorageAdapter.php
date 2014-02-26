@@ -7,10 +7,8 @@
  * @package   AxalianAchievements\StorageAdapter
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievements\StorageAdapter;
-
 
 use AxalianAchievements\Entity\Achievement;
 use AxalianAchievements\User\UserInterface;

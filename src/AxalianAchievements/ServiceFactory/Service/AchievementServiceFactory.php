@@ -28,7 +28,9 @@ class AchievementServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         /** @var AchievementProviderPluginManager $pluginManager */
-        $pluginManager = $serviceLocator->get('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager');
+        $pluginManager = $serviceLocator->get(
+            'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager'
+        );
 
         /** @var ModuleOptions $moduleOptions */
         $moduleOptions = $serviceLocator->get('AxalianAchievements\Options\ModuleOptions');
@@ -39,4 +41,3 @@ class AchievementServiceFactory implements FactoryInterface
         return new AchievementService($pluginManager, $storageAdapter);
     }
 }
- 

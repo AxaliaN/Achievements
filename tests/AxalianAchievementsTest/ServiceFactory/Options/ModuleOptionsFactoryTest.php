@@ -6,10 +6,8 @@
  * @package   AxalianAchievementsTest\ServiceFactory\Options
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
 
 namespace AxalianAchievementsTest\ServiceFactory\Options;
-
 
 use AxalianAchievements\ServiceFactory\Options\ModuleOptionsFactory;
 use PHPUnit_Framework_TestCase;

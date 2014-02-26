@@ -96,8 +96,8 @@ class AchievementService
     public function getAchievementByName($achievementName)
     {
         /** @var Achievement $achievement */
-        foreach($this->getAchievements() as $achievement) {
-            if($achievement->getName() == $achievementName) {
+        foreach ($this->getAchievements() as $achievement) {
+            if ($achievement->getName() == $achievementName) {
                 return $achievement;
             }
         }
@@ -116,8 +116,8 @@ class AchievementService
         $achievements = array();
 
         /** @var Achievement $achievement */
-        foreach($this->getAchievements() as $achievement) {
-            if($achievement->getCategory() == $category) {
+        foreach ($this->getAchievements() as $achievement) {
+            if ($achievement->getCategory() == $category) {
                 $achievements[] = $achievement;
             }
         }
@@ -130,7 +130,7 @@ class AchievementService
      * @param UserInterface $user
      * @param bool $store Whether to store this action using the storage adapter
      */
-    public function addAwardedAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
+    public function awardAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
     {
         $this->awardedAchievements[] = $achievement;
 
@@ -144,7 +144,7 @@ class AchievementService
      * @param UserInterface $user
      * @param bool $store Whether to store this action using the storage adapter
      */
-    public function addRemovedAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
+    public function removeAchievement(Achievement $achievement, UserInterface $user = null, $store = true)
     {
         $this->removedAchievements[] = $achievement;
 
@@ -223,4 +223,3 @@ class AchievementService
         return $this;
     }
 }
- 

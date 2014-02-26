@@ -61,18 +61,16 @@ class ConfigAchievementProviderTest extends PHPUnit_Framework_TestCase
                 'category' => 'General',
                 'title' => 'Visited site!',
                 'description' => 'You visited the site!',
-                'event' => 'site_visit',
+                'name' => 'site_visit',
                 'points' => 10,
-                'multiple' => true,
                 'image' => 'visit.png',
             ),
             'posted_comment' => array(
                 'category' => 'social',
                 'title' => 'Commented!',
                 'description' => 'You posted a comment!',
-                'event' => 'site_visit',
+                'name' => 'site_visit',
                 'points' => 10,
-                'multiple' => true,
                 'image' => 'visit.png',
             ),
         );
@@ -83,11 +81,11 @@ class ConfigAchievementProviderTest extends PHPUnit_Framework_TestCase
         );
 
 
-        foreach($this->categories as $id => $categoryConfig) {
+        foreach ($this->categories as $id => $categoryConfig) {
             $this->categoryEntities[] = new Category($id, $categoryConfig);
         }
 
-        foreach($this->achievements as $id => $achievementConfig) {
+        foreach ($this->achievements as $id => $achievementConfig) {
             $this->achievementEntities[] = new Achievement($id, $achievementConfig);
         }
 
@@ -100,4 +98,3 @@ class ConfigAchievementProviderTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->categoryEntities, $this->provider->getCategories());
     }
 }
- 

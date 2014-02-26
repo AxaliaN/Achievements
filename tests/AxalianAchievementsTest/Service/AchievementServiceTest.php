@@ -37,7 +37,9 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->pluginProvider = \Mockery::mock('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager');
+        $this->pluginProvider = \Mockery::mock(
+            'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager'
+        );
 
         $storageAdapter = \Mockery::mock('AxalianAchievements\StorageAdapter\StorageAdapterInterface');
         $storageAdapter->shouldReceive('awardAchievementToUser');
@@ -46,27 +48,44 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->service = new AchievementService($this->pluginProvider, $storageAdapter);
 
         $this->achievements = array(
-            1 => \Mockery::mock('AxalianAchievements\Entity\Achievement')->shouldReceive('getID')->andReturn(1)->getMock(),
-            2 => \Mockery::mock('AxalianAchievements\Entity\Achievement')->shouldReceive('getID')->andReturn(2)->getMock(),
+            1 => \Mockery::mock('AxalianAchievements\Entity\Achievement')
+                    ->shouldReceive('getID')
+                    ->andReturn(1)
+                    ->getMock(),
+            2 => \Mockery::mock('AxalianAchievements\Entity\Achievement')
+                    ->shouldReceive('getID')
+                    ->andReturn(2)
+                    ->getMock(),
         );
 
         $this->categories = array(
-            1 => \Mockery::mock('AxalianAchievements\Entity\Category')->shouldReceive('getID')->andReturn(1)->getMock(),
-            2 => \Mockery::mock('AxalianAchievements\Entity\Category')->shouldReceive('getID')->andReturn(2)->getMock(),
+            1 => \Mockery::mock('AxalianAchievements\Entity\Category')
+                    ->shouldReceive('getID')
+                    ->andReturn(1)
+                    ->getMock(),
+            2 => \Mockery::mock('AxalianAchievements\Entity\Category')
+                    ->shouldReceive('getID')
+                    ->andReturn(2)
+                    ->getMock(),
         );
     }
 
     public function testIfConstructsCorrectly()
     {
-        $this->assertInstanceOf('AxalianAchievements\AchievementProvider\AchievementProviderPluginManager', $this->service->getPluginManager());
+        $this->assertInstanceOf(
+            'AxalianAchievements\AchievementProvider\AchievementProviderPluginManager',
+            $this->service->getPluginManager()
+        );
     }
 
     public function testIfAchievementsCanBeRetrieved()
     {
         $providerMock = \Mockery::mock('AxalianAchievement\AchievementProvider\AchievementProviderInterface');
-        $providerMock->shouldReceive('getAchievements')->andReturn($this->achievements);
+        $providerMock->shouldReceive('getAchievements')
+                     ->andReturn($this->achievements);
 
         $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
+
         $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
 
         $achievements = $this->service->getAchievements();
@@ -130,7 +149,7 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->pluginProvider->shouldReceive('getCanonicalNames')->andReturn(array($providerMock))->getMock();
         $this->pluginProvider->shouldReceive('get')->andReturn($providerMock);
 
-        $this->achievements[1]->shouldReceive('getCategory')->andReturn(new Category(1,array()));
+        $this->achievements[1]->shouldReceive('getCategory')->andReturn(new Category(1, array()));
 
         $achievements = $this->service->getAchievementsByCategory($this->categories[1]);
 
@@ -157,7 +176,10 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->service->addAwardedAchievement($this->achievements[1]);
         $this->service->addAwardedAchievement($this->achievements[2], $userMock);
 
-        $this->assertEquals(array($this->achievements[1], $this->achievements[2]), $this->service->getAwardedAchievements());
+        $this->assertEquals(
+            array($this->achievements[1], $this->achievements[2]),
+            $this->service->getAwardedAchievements()
+        );
     }
 
     public function testIfRemovedAchievementsAreCollected()
@@ -167,7 +189,9 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
         $this->service->addRemovedAchievement($this->achievements[1]);
         $this->service->addRemovedAchievement($this->achievements[2], $userMock);
 
-        $this->assertEquals(array($this->achievements[1], $this->achievements[2]), $this->service->getRemovedAchievements());
+        $this->assertEquals(
+            array($this->achievements[1], $this->achievements[2]),
+            $this->service->getRemovedAchievements()
+        );
     }
 }
- 

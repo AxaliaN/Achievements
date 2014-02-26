@@ -70,4 +70,3 @@ class AbstractAchievementViewHelper extends AbstractHelper
         return $this;
     }
 }
- 
