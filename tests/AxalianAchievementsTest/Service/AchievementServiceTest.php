@@ -173,8 +173,8 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
     {
         $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
 
-        $this->service->addAwardedAchievement($this->achievements[1]);
-        $this->service->addAwardedAchievement($this->achievements[2], $userMock);
+        $this->service->awardAchievement($this->achievements[1]);
+        $this->service->awardAchievement($this->achievements[2], $userMock);
 
         $this->assertEquals(
             array($this->achievements[1], $this->achievements[2]),
@@ -186,8 +186,8 @@ class AchievementServiceTest extends PHPUnit_Framework_TestCase
     {
         $userMock = \Mockery::mock('AxalianAchievements\User\UserInterface');
 
-        $this->service->addRemovedAchievement($this->achievements[1]);
-        $this->service->addRemovedAchievement($this->achievements[2], $userMock);
+        $this->service->removeAchievement($this->achievements[1]);
+        $this->service->removeAchievement($this->achievements[2], $userMock);
 
         $this->assertEquals(
             array($this->achievements[1], $this->achievements[2]),
