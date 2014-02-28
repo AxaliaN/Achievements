@@ -6,7 +6,7 @@
  * @package   AxalianAchievementsTest\Entity
  * @author    Michel Maas <michel@michelmaas.com>
  */
- 
+
 
 namespace AxalianAchievementsTest\Entity;
 
