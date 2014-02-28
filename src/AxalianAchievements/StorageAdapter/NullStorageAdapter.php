@@ -40,4 +40,3 @@ class NullStorageAdapter implements StorageAdapterInterface
         return true;
     }
 }
- 
